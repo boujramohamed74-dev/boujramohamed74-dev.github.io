@@ -1,6 +1,6 @@
 /* يحفظ ملفات التطبيق على الهاتف ليعمل بدون إنترنت.
    عند تعديل أي ملف: غيّر رقم VERSION ليصل التحديث للمستخدمين. */
-var VERSION = 'rattib-v1';
+var VERSION = 'rattib-v2';
 var SHELL = [
   './', './index.html', './style.css', './store.js', './app.js',
   './manifest.webmanifest', './icon-192.png', './icon-512.png'

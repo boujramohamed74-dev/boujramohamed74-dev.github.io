@@ -7,8 +7,10 @@
 
   /* عدّل هذين النصين قبل النشر */
   var CONFIG = {
-    aboutText: '[اكتب هنا نبذة عن التطبيق وفكرته وهدفه]',
-    contactText: '[اكتب هنا وسيلة التواصل مع المطور: بريد إلكتروني أو واتساب]'
+    aboutText: '«رتب» تطبيق بسيط يساعدك على ترتيب حياتك ودراستك وعملك في مكان واحد. تنشئ مهامك وتلوّنها حسب أولويتها، ثم تقسّم كل مهمة إلى مهام فرعية تتابعها بنسبة مئوية أو بخطوات تضع عليها علامة عند إنجازها، فترى تقدمك بوضوح. يعمل بدون إنترنت، وبياناتك محفوظة على هاتفك وحده، ولا يطلب منك حساباً ولا أي بيانات شخصية. فكرة وتطوير: محمد بوجرة.',
+    contactName: 'محمد بوجرة',
+    whatsapp: '212603876494',
+    whatsappMessage: '✋️سلام على من اتبع الهدى'
   };
 
   function getStorage() {
@@ -231,8 +233,15 @@
       h += '<button class="btn ghost" data-action="close">تم</button>';
     } else if (ui.sheet === 'info') {
       var about = d.k === 'about';
-      h += '<h2>' + (about ? 'من نحن' : 'تواصل مع المطور') + '</h2><p class="hint" style="font-size:15px">' +
-        esc(about ? CONFIG.aboutText : CONFIG.contactText) + '</p><button class="btn ghost" data-action="close">إغلاق</button>';
+      h += '<h2>' + (about ? 'من نحن' : 'تواصل مع المطور') + '</h2>';
+      if (about) {
+        h += '<p class="hint" style="font-size:15px">' + esc(CONFIG.aboutText) + '</p>';
+      } else {
+        var wa = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.whatsappMessage);
+        h += '<p class="hint" style="font-size:15px">للتواصل أو الاستفسار، راسلني على واتساب:</p>' +
+          '<a class="wa" href="' + wa + '" target="_blank" rel="noopener">' + esc(CONFIG.contactName) + '</a>';
+      }
+      h += '<button class="btn ghost" data-action="close">إغلاق</button>';
     }
     return h;
   }
